@@ -10,7 +10,7 @@
 
     <properties>
         <scalaVersion>2.10.4</scalaVersion>
-        <sparkVersion>1.5.0-cdh5.6.0</sparkVersion>
+        <sparkVersion>2.3.1</sparkVersion>
         <assertj.version>1.7.0</assertj.version>
     </properties>
 
@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.10</artifactId>
+            <artifactId>spark-core_2.11</artifactId>
             <version>${sparkVersion}</version>
         </dependency>
         <dependency>

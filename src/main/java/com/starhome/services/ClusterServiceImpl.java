@@ -23,15 +23,15 @@ public class ClusterServiceImpl implements ClusterService {
             printCurrentClusters(clusters);
             JavaPairRDD<Cluster, Cluster> cartesianRdd = clusters.cartesian(clusters);
             cartesianRdd = removeDuplicates(cartesianRdd);
-            System.out.println("cartesianRdd.count() = " + cartesianRdd.count());
+            //System.out.println("cartesianRdd.count() = " + cartesianRdd.count());
             JavaRDD<Tuple3<Cluster, Cluster, Double>> cartesianWithDistance = cartesianRdd.map(v -> {
 
                 double distance = ClusterUtil.calcDistance(v._1(), v._2());
-                System.out.println("setting cluster #" + v._1().getId() + "-" + v._2() + " dist=" + distance);
+                //System.out.println("setting cluster #" + v._1().getId() + "-" + v._2() + " dist=" + distance);
 
                 return new Tuple3<>(v._1(), v._2(), distance);
             });
-            cartesianWithDistance.collect().forEach(System.out::println);
+            //cartesianWithDistance.collect().forEach(System.out::println);
             Tuple3<Cluster, Cluster, Double> twoClustersWithDistance = cartesianWithDistance.min(new DistanceComparator());
             Cluster clusterWhichShouldGrow = twoClustersWithDistance._1();
             Cluster clusterWhichShouldBeRemoved = twoClustersWithDistance._2();

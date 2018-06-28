@@ -12,8 +12,8 @@ public class ClusterUtil {
         for (Point point1 : c1.getPoints()) {
             for (Point point2 : c2.getPoints()) {
                 double similarity = cosineSimilarity(getFeaturesAsArray(point1), getFeaturesAsArray(point2));
-                System.out.println( "comparing: "+c1.getId()+" with "+c2.getId()+" dist= "+similarity);
-                if (similarity>distance){
+                //System.out.println( "comparing: "+c1.getId()+" with "+c2.getId()+" dist= "+similarity);
+                if (similarity > distance) {
                     distance = similarity;
                 }
             }
@@ -35,6 +35,6 @@ public class ClusterUtil {
             normA += Math.pow(vectorA[i], 2);
             normB += Math.pow(vectorB[i], 2);
         }
-        return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+        return 1 - (dotProduct / (Math.sqrt(normA) * Math.sqrt(normB)));
     }
 }
